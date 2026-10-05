@@ -1,5 +1,5 @@
-const V='inkfold-v1';
-const CORE=['./','index.html','manifest.json','lib/pdf.min.js','lib/pdf.worker.min.js','lib/jspdf.umd.min.js','icons/icon-192.png','icons/icon-512.png','icons/apple-touch-icon.png'];
+const V='inkfold-v2';
+const CORE=['./','index.html','manifest.json','pdf.min.js','pdf.worker.min.js','jspdf.umd.min.js','icon-192.png','icon-512.png','apple-touch-icon.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>c.addAll(CORE)));self.skipWaiting()});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==V).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
 self.addEventListener('fetch',e=>{const r=e.request;if(r.method!=='GET')return;const u=new URL(r.url);
